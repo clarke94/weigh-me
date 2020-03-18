@@ -1,0 +1,75 @@
+$bfa-primary: (
+    50: #f2e7e3,
+    100: #dfc3b9,
+    200: #ca9b8b,
+    300: #b4725c,
+    400: #a45439,
+    500: #943616,
+    600: #8c3013,
+    700: #812910,
+    800: #77220c,
+    900: #651606,
+    A100: #ffa296,
+    A200: #ff7563,
+    A400: #ff4830,
+    A700: #ff3216,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #ffffff,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+        A100: #000000,
+        A200: #000000,
+        A400: #ffffff,
+        A700: #ffffff
+    )
+);
+
+$bfa-secondary: (
+    50: #faf6eb,
+    100: #f2e9ce,
+    200: #eadbae,
+    300: #e1cd8d,
+    400: #dac274,
+    500: #d4b75c,
+    600: #cfb054,
+    700: #c9a74a,
+    800: #c39f41,
+    900: #b99030,
+    A100: #fffffe,
+    A200: #ffefcb,
+    A400: #ffdf98,
+    A700: #ffd77f,
+    contrast: (
+        50: #000000,
+        100: #000000,
+        200: #000000,
+        300: #000000,
+        400: #000000,
+        500: #000000,
+        600: #000000,
+        700: #000000,
+        800: #000000,
+        900: #000000,
+        A100: #000000,
+        A200: #000000,
+        A400: #000000,
+        A700: #000000
+    )
+);
+
+@import "~@angular/material/theming";
+@include mat-core();
+
+$eastlancs-primary: mat-palette($bfa-primary);
+$eastlancs-accent: mat-palette($bfa-secondary, A200, A100, A400);
+$eastlancs-warn: mat-palette($mat-red);
+$eastlancs-theme: mat-light-theme($eastlancs-primary, $eastlancs-accent, $eastlancs-warn);
+
+@include angular-material-theme($eastlancs-theme);

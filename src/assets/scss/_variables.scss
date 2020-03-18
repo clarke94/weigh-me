@@ -1,0 +1,61 @@
+// ------------------------------------
+//  VARIABLES
+// ------------------------------------
+
+// Global namespace prefix
+$ns: "bfa";
+
+// Typography
+// ------------------------------------
+
+// Application base font size
+$base-font-size: 16px;
+
+// Colours
+// ------------------------------------
+
+$palettes: (
+    black: (
+        default: #000000
+    ),
+    white: (
+        default: #ffffff
+    ),
+    grey: (
+        default: #4b4b4b,
+        alt: #c1c1c1,
+        pale: #f5f6f7
+    ),
+    secondary: (
+        default: #d4b75c,
+        alt: #b19334,
+        dark: #896d14,
+        pale: #fff0bf,
+        tint: #fbe394
+    ),
+    primary: (
+        default: #943616,
+        alt: #7d2709,
+        dark: #641a00,
+        pale: #d66f4b,
+        tint: #a84624
+    )
+);
+
+// Grid
+$grid-gutter-width: 30px;
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);
+
+$container-max-widths: (
+    sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px
+);
