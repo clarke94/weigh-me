@@ -14,20 +14,20 @@ $bfa-primary: (
     A400: #ff4830,
     A700: #ff3216,
     contrast: (
-        50: #000000,
-        100: #000000,
-        200: #000000,
-        300: #000000,
-        400: #ffffff,
-        500: #ffffff,
-        600: #ffffff,
-        700: #ffffff,
-        800: #ffffff,
-        900: #ffffff,
-        A100: #000000,
-        A200: #000000,
-        A400: #ffffff,
-        A700: #ffffff
+        50: #000,
+        100: #000,
+        200: #000,
+        300: #000,
+        400: #fff,
+        500: #fff,
+        600: #fff,
+        700: #fff,
+        800: #fff,
+        900: #fff,
+        A100: #000,
+        A200: #000,
+        A400: #fff,
+        A700: #fff
     )
 );
 
@@ -47,29 +47,29 @@ $bfa-secondary: (
     A400: #ffdf98,
     A700: #ffd77f,
     contrast: (
-        50: #000000,
-        100: #000000,
-        200: #000000,
-        300: #000000,
-        400: #000000,
-        500: #000000,
-        600: #000000,
-        700: #000000,
-        800: #000000,
-        900: #000000,
-        A100: #000000,
-        A200: #000000,
-        A400: #000000,
-        A700: #000000
+        50: #000,
+        100: #000,
+        200: #000,
+        300: #000,
+        400: #000,
+        500: #000,
+        600: #000,
+        700: #000,
+        800: #000,
+        900: #000,
+        A100: #000,
+        A200: #000,
+        A400: #000,
+        A700: #000
     )
 );
 
-@import "~@angular/material/theming";
+@import '~@angular/material/theming';
 @include mat-core();
 
-$eastlancs-primary: mat-palette($bfa-primary);
-$eastlancs-accent: mat-palette($bfa-secondary, A200, A100, A400);
-$eastlancs-warn: mat-palette($mat-red);
-$eastlancs-theme: mat-light-theme($eastlancs-primary, $eastlancs-accent, $eastlancs-warn);
+$weigh-me-primary: mat-palette($bfa-primary);
+$weigh-me-accent: mat-palette($bfa-secondary, A200, A100, A400);
+$weigh-me-warn: mat-palette($mat-red);
+$weigh-me-theme: mat-light-theme($weigh-me-primary, $weigh-me-accent, $weigh-me-warn);
 
-@include angular-material-theme($eastlancs-theme);
+@include angular-material-theme($weigh-me-theme);

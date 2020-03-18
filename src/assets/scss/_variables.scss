@@ -3,7 +3,7 @@
 // ------------------------------------
 
 // Global namespace prefix
-$ns: "bfa";
+$ns: 'bfa';
 
 // Typography
 // ------------------------------------
@@ -16,10 +16,10 @@ $base-font-size: 16px;
 
 $palettes: (
     black: (
-        default: #000000
+        default: #000
     ),
     white: (
-        default: #ffffff
+        default: #fff
     ),
     grey: (
         default: #4b4b4b,
