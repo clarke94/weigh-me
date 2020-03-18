@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { WeightService } from 'src/app/services/weight/weight.service';
 
 @Component({
     selector: 'app-weight',
@@ -22,7 +23,8 @@ export class WeightComponent implements OnInit {
     maxDate: Date;
 
     constructor(
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private weight: WeightService
     ) { }
 
     ngOnInit(): void {
@@ -65,6 +67,15 @@ export class WeightComponent implements OnInit {
         const dateInput = this.formControls.date.value;
 
         console.log('submitted', { weight, measurement, dateInput });
+        const data = {
+            "name": dateInput,
+            value: weight
+        }
+        this.weight.addWeight(data).subscribe(
+            res => {
+                console.log(res);
+            }
+        )
     }
 
 }

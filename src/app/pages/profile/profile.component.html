@@ -1,5 +1,7 @@
 <main class="profile" *ngIf="auth.userProfile$ | async as profile">
     <h1 class="mat-h1 profile__name" *ngIf="profile.name">{{profile.name}}</h1>
 
+    <app-chart></app-chart>
+    <div class="clear"></div>
     <app-weight></app-weight>
 </main>
