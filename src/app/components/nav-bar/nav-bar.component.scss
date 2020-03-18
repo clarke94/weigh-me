@@ -1,4 +1,14 @@
+@import '../../../assets/scss/shared';
+
 .navbar {
     display: flex;
     justify-content: space-between;
+
+    &__logo {
+        @include rem(font-size, 24px);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

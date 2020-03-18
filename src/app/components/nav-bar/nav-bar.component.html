@@ -1,5 +1,8 @@
 <mat-toolbar class="navbar">
-    <span>Weigh Me</span>
-    <button mat-flat-button color="primary" (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
-    <button mat-flat-button color="primary" (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+    <a [routerLink]="[ '/' ]" mat-button color="primary" class="navbar__logo">Weigh Me</a>
+    <nav>
+        <a [routerLink]="[ '/profile' ]" *ngIf="auth.loggedIn" mat-button color="primary">Profile</a>
+        <button mat-flat-button color="primary" (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
+        <button mat-flat-button color="primary" (click)="auth.logout()" *ngIf="auth.loggedIn">Log Out</button>
+    </nav>
 </mat-toolbar>

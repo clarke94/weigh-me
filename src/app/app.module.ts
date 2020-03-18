@@ -10,11 +10,13 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavBarComponent
+        NavBarComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserModule,
