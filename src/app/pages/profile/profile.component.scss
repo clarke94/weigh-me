@@ -1,0 +1,19 @@
+@import '../../../assets/scss/shared';
+
+.profile {
+    @include rem(padding, 16px);
+    margin: 0 auto;
+    max-width: map-get($map: $container-max-widths, $key: xl);
+
+    &__image {
+        @include rem(max-width, 300px);
+        border-radius: 50%;
+        display: block;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    &__name {
+        text-align: center;
+    }
+}
