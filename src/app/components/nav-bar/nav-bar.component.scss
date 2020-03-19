@@ -23,14 +23,14 @@
     }
 
     &__stroke {
-        animation: offset 2.5s linear 0.5s forwards;
+        animation: offset 1.5s linear 0.5s forwards;
         stroke: color(primary);
         stroke-dasharray: 450;
         stroke-dashoffset: 450;
     }
 
     &__stroke--alt {
-        stroke: color(primary, alt);
+        stroke: lighten(color(primary), 6%);
         stroke-dasharray: 450;
         stroke-dashoffset: 450;
         transition: stroke-dashoffset 0.5s linear;
