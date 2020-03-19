@@ -20,6 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HomeComponent } from './pages/home/home.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +29,9 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
         NavBarComponent,
         ProfileComponent,
         WeightComponent,
-        ChartComponent
+        ChartComponent,
+        HomeComponent,
+        FooterComponent
     ],
     imports: [
         BrowserModule,
