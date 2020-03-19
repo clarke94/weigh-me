@@ -4,7 +4,7 @@
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
-        "json": "json-server --watch ./srv/mock/stub-data.json --routes ./srv/mock/stub-routes.json",
+        "json": "json-server --watch ./srv/mock/stub.json",
         "build": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint && npx stylelint \"**/*.scss\"",

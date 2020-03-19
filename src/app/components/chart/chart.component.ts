@@ -8,7 +8,7 @@ import { WeightService } from 'src/app/services/weight/weight.service';
     encapsulation: ViewEncapsulation.None
 })
 export class ChartComponent implements OnInit {
-    view: any[] = [700, 300];
+    view: any[] = [0, 300];
     data;
 
     // options
@@ -32,13 +32,12 @@ export class ChartComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.getChartDate();
+        this.getChartData();
     }
 
-    getChartDate(): void {
+    getChartData(): void {
         this.weight.getAllWeights().subscribe(
             data => {
-                console.log(data);
                 this.data = data;
             }
         );

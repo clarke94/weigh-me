@@ -1,0 +1,29 @@
+{
+  "weights": [
+    {
+      "id": 1,
+      "name": "Wed Feb 26 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+      "value": 80
+    },
+    {
+      "id": 2,
+      "name": "Wed Mar 04 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+      "value": 80
+    },
+    {
+      "id": 3,
+      "name": "Wed Mar 11 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+      "value": 85
+    },
+    {
+      "id": 4,
+      "name": "Wed Mar 18 2020 22:25:23 GMT+0000 (Greenwich Mean Time)",
+      "value": 90
+    },
+    {
+      "name": "2020-02-19T00:00:00.000Z",
+      "value": 85,
+      "id": 5
+    }
+  ]
+}

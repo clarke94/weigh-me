@@ -1,3 +1,19 @@
+@import '../../../assets/scss/shared';
+
+.chart {
+    @include rem(height, 330px);
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    @include breakpoint-up(md) {
+        @include rem(height, 400px);
+    }
+
+    @include breakpoint-up(lg) {
+        @include rem(height, 500px);
+    }
+}
+
 .ngx-charts-outer {
     margin: 0 auto;
 }

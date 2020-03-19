@@ -69,7 +69,7 @@ export class WeightComponent implements OnInit {
         console.log('submitted', { weight, measurement, dateInput });
         const data = {
             "name": dateInput,
-            value: weight
+            "value": weight
         }
         this.weight.addWeight(data).subscribe(
             res => {
