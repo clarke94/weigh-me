@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/39244a45-e184-486a-a115-fc808067a13c/deploy-status)](https://app.netlify.com/sites/weigh-me/deploys)
+
 # WeighMe
 
 This project was created for learning purposes. An app that allows a user to create an account and track their weight. Allowing a user to set goals, view friends and gain achievements.
