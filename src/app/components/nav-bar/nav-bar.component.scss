@@ -1,15 +1,38 @@
 @import '../../../assets/scss/shared';
 
+@keyframes offset {
+    100% {
+        stroke-dashoffset: 0;
+
+    }
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
 
     &__logo {
-        @include rem(font-size, 24px);
+        fill: color(primary);
         padding: 0;
 
         &:hover {
-            text-decoration: underline;
+            .navbar__stroke--alt {
+                stroke-dashoffset: 0;
+            }
         }
+    }
+
+    &__stroke {
+        animation: offset 2.5s linear 0.5s forwards;
+        stroke: color(primary);
+        stroke-dasharray: 450;
+        stroke-dashoffset: 450;
+    }
+
+    &__stroke--alt {
+        stroke: color(primary, alt);
+        stroke-dasharray: 450;
+        stroke-dashoffset: 450;
+        transition: stroke-dashoffset 0.5s linear;
     }
 }

@@ -1,5 +1,10 @@
 <mat-toolbar class="navbar">
-    <a [routerLink]="[ '/' ]" mat-button color="primary" class="navbar__logo">Weigh Me</a>
+    <a [routerLink]="[ '/' ]" mat-button color="primary" class="navbar__logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107.677 42.258">
+            <path class="navbar__stroke" fill="none" stroke-width="17.165" d="M8.197 44.716L17.88 8.524h2.414l8.009 7.95h1.292l8.604-7.95H40.3l9.854 36.738M57.587-2.224l9.685 36.192h2.413l8.01-7.95h1.292l8.603 7.95h2.102L99.545-2.77" />
+            <path class="navbar__stroke--alt" fill="none" stroke-width="17.165" d="M8.197 44.716L17.88 8.524h2.414l8.009 7.95h1.292l8.604-7.95H40.3l9.854 36.738M57.587-2.224l9.685 36.192h2.413l8.01-7.95h1.292l8.603 7.95h2.102L99.545-2.77" />
+        </svg>
+    </a>
     <nav>
         <a [routerLink]="[ '/profile' ]" *ngIf="auth.loggedIn" mat-button color="primary">Profile</a>
         <button mat-flat-button color="primary" (click)="auth.login()" *ngIf="!auth.loggedIn">Log In</button>
