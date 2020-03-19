@@ -6,20 +6,73 @@
     max-width: map-get($map: $container-max-widths, $key: xl);
 
     &__container {
-        @include rem(padding-top, 18px);
-        @include rem(padding-bottom, 27px);
-        max-width: calc(1200px - 60%);
+        @include rem(padding-top, 36px);
+        @include rem(padding-bottom, 63px);
+        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-        &:nth-of-type(even) {
-            margin-left: auto;
+        @include breakpoint-up(sm) {
+            @include rem(padding-bottom, 72px);
+
+            &:nth-of-type(even) {
+                .home__col {
+                    grid-row: 1;
+
+                    &:first-of-type {
+                        grid-column: 2;
+                    }
+
+                    &:last-of-type {
+                        grid-column: 1;
+                    }
+                }
+            }
+
+            &:nth-of-type(odd) {
+                .home__col {
+                    grid-row: 1;
+
+                    &:first-of-type {
+                        grid-column: 1;
+                    }
+
+                    &:last-of-type {
+                        grid-column: 2;
+                    }
+                }
+            }
         }
+    }
+
+    &__banner {
+        background: linear-gradient(to right, color(primary, dark), color(primary));
+    }
+
+    &__banner-content {
+        @include rem(padding, 16px);
+        @include rem(padding-top, 36px);
+        @include rem(padding-bottom, 63px);
+        align-items: center;
+        color: color(secondary, alt);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        margin: 0 auto;
+        max-width: map-get($map: $container-max-widths, $key: xl);
+    }
+
+    &__banner-button {
+        @include rem(font-size, 18px);
+        @include rem(padding, 9px 15px);
     }
 
     &__h1,
     &__h2,
     &__subheading, {
         @include rem(margin-bottom, 12px);
+        display: block;
         line-height: normal;
+        width: 100%;
     }
 
     &__h1 {
@@ -40,5 +93,22 @@
         @include rem(margin-bottom, 18px);
         @include rem(margin-top, 18px);
         width: 100%;
+    }
+
+    &__illustration {
+        @include rem(width, 200px);
+        height: auto;
+    }
+
+    &__col {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        text-align: center;
+
+        @include breakpoint-up(sm) {
+            text-align: left;
+        }
     }
 }
