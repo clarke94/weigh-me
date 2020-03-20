@@ -1,4 +1,4 @@
 <app-nav-bar></app-nav-bar>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
-<app-initial *ngIf="loading"></app-initial>
+<app-initial *ngIf="loading | async"></app-initial>

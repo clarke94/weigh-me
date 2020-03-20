@@ -10,7 +10,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartComponent } from './components/chart/chart.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,6 +23,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DatePipe } from '@angular/common';
 import { InitialComponent } from './components/initial/initial.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './store/reducers';
+import { InitialInterceptor } from './interceptors/initial.interceptor';
 
 @NgModule({
     declarations: [
@@ -47,9 +50,19 @@ import { InitialComponent } from './components/initial/initial.component';
         MatDatepickerModule,
         MatNativeDateModule,
         NgxChartsModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+        StoreModule.forRoot(reducers, {
+            metaReducers
+        })
     ],
-    providers: [DatePipe],
+    providers: [
+        DatePipe,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InitialInterceptor,
+            multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
