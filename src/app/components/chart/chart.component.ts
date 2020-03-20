@@ -63,7 +63,7 @@ export class ChartComponent implements OnInit {
         for (var i = 6; i >= 0; i--) {
             let d = new Date();
             d.setDate(d.getDate() - i);
-            dates.push({ name: this.datePipe.transform(d), value: Math.floor(Math.random() * (95 * 100 - 70 * 100) + 70 * 100) / (100) })
+            dates.push({ name: d, value: Math.floor(Math.random() * (95 * 100 - 70 * 100) + 70 * 100) / (100) })
         }
 
         const defaultData = [
