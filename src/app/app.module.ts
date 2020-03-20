@@ -8,7 +8,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { WeightComponent } from './components/weight/weight.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartComponent } from './components/chart/chart.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,13 +21,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     declarations: [
         AppComponent,
         NavBarComponent,
         ProfileComponent,
-        WeightComponent,
         ChartComponent,
         HomeComponent,
         FooterComponent
@@ -48,7 +47,7 @@ import { FooterComponent } from './components/footer/footer.component';
         NgxChartsModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],
-    providers: [],
+    providers: [DatePipe],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

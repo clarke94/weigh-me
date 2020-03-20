@@ -1,19 +1,49 @@
 @import '../../../assets/scss/shared';
 
 .chart {
-    @include rem(height, 330px);
+    @include rem(min-height, 330px);
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-rows: repeat(2, auto);
 
     @include breakpoint-up(md) {
-        @include rem(height, 400px);
+        @include rem(min-height, 400px);
     }
 
     @include breakpoint-up(lg) {
-        @include rem(height, 500px);
+        @include rem(min-height, 500px);
+    }
+
+    &__line {
+        @include rem(height, 330px);
+
+        @include breakpoint-up(md) {
+            @include rem(height, 400px);
+        }
+
+        @include breakpoint-up(lg) {
+            @include rem(height, 500px);
+        }
     }
 }
 
 .ngx-charts-outer {
     margin: 0 auto;
+}
+
+.form {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+    &__field {
+        @include rem(padding, 0 9px);
+    }
+
+    &__submit {
+        width: 100%;
+
+        @include breakpoint-up(sm) {
+            width: auto;
+        }
+    }
 }

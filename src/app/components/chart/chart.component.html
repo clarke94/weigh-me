@@ -1,4 +1,37 @@
 <section class="chart">
-    <ngx-charts-line-chart [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="data" (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+    <ngx-charts-line-chart class="chart__line" [scheme]="colorScheme" [legend]="legend" [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="xAxis" [yAxis]="yAxis" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [timeline]="timeline" [results]="data" (select)="onSelect($event)">
     </ngx-charts-line-chart>
+
+    <form class="form" [formGroup]="weightForm" (ngSubmit)="weightSubmit()">
+        <mat-form-field class="form__field">
+            <mat-label>Weight</mat-label>
+            <input matInput type="number" formControlName="weight">
+            <mat-error *ngIf="weightForm.controls.weight.errors?.required">
+                Weight is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="weightForm.controls.weight.errors?.pattern">
+                Weight must be a <strong>positive number</strong> with only <strong>one decimal</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form__field">
+            <mat-label>Measurement {{yAxisLabel}}</mat-label>
+            <mat-select formControlName="measurement" [(value)]="yAxisLabel" (selectionChange)="updatedMeasurement()">
+                <mat-option *ngFor="let measurement of measurements" [value]="measurement">
+                    {{measurement}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="form__field">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [max]="maxDate" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="form__field">
+            <button class="form__submit" mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+    </form>
 </section>
