@@ -1,0 +1,35 @@
+@import '../../../assets/scss/shared';
+
+.loading {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.6);
+    bottom: 0;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 100000;
+
+    &__icon {
+        @include rem(width, 150px);
+        height: auto;
+    }
+
+    &__spinner {
+        fill: color(primary);
+    }
+
+    &__static {
+        fill: color(greyed, alt);
+    }
+
+    &__logo {
+        @include rem(width, 60px);
+        height: auto;
+        position: absolute;
+    }
+}

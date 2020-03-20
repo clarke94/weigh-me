@@ -22,6 +22,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DatePipe } from '@angular/common';
+import { InitialComponent } from './components/initial/initial.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { DatePipe } from '@angular/common';
         ProfileComponent,
         ChartComponent,
         HomeComponent,
-        FooterComponent
+        FooterComponent,
+        InitialComponent
     ],
     imports: [
         BrowserModule,
