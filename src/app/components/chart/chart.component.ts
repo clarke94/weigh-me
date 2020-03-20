@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
 import { WeightService } from 'src/app/services/weight/weight.service';
 import { DatePipe } from '@angular/common';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
@@ -10,7 +10,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
     encapsulation: ViewEncapsulation.None
 })
 export class ChartComponent implements OnInit {
-    view: any[] = [0, 300];
+    view: any[] = [undefined, 330];
     data: any;
     measurements: any[] = [];
     selected: any = '';
@@ -44,12 +44,24 @@ export class ChartComponent implements OnInit {
         this.setMaxDate();
         this.setWeightForm();
         this.setMeasurements();
+        this.resizeChart();
+    }
+    @HostListener('window:resize', ['$event'])
+    resizeChart() {
+        const w = window.innerWidth;
+        if (w > 1200) {
+            this.view = [1200, 500];
+        } else if (w > 768) {
+            this.view = [w - 50, 400];
+        } else {
+            this.view = [w - 50, 330];
+        }
     }
 
     setInitialChartData(): void {
         let dates: any[] = [];
-        for (var i = 0; i < 7; i++) {
-            var d = new Date();
+        for (var i = 6; i >= 0; i--) {
+            let d = new Date();
             d.setDate(d.getDate() - i);
             dates.push({ name: this.datePipe.transform(d), value: Math.floor(Math.random() * (95 * 100 - 70 * 100) + 70 * 100) / (100) })
         }

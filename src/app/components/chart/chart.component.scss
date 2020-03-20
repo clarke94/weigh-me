@@ -1,29 +1,8 @@
 @import '../../../assets/scss/shared';
 
 .chart {
-    @include rem(min-height, 330px);
     display: grid;
     grid-template-rows: repeat(2, auto);
-
-    @include breakpoint-up(md) {
-        @include rem(min-height, 400px);
-    }
-
-    @include breakpoint-up(lg) {
-        @include rem(min-height, 500px);
-    }
-
-    &__line {
-        @include rem(height, 330px);
-
-        @include breakpoint-up(md) {
-            @include rem(height, 400px);
-        }
-
-        @include breakpoint-up(lg) {
-            @include rem(height, 500px);
-        }
-    }
 }
 
 .ngx-charts-outer {
