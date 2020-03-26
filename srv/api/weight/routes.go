@@ -10,6 +10,6 @@ func Routes() *chi.Mux {
 	router.Get("/{ID}", GetByID)
 	router.Delete("/{ID}", DeleteByID)
 	router.Post("/", CreateWeight)
-	router.Get("/", GetAllWeight)
+	router.Get("/", GetAllWeights)
 	return router
 }
