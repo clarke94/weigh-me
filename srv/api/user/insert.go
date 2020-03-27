@@ -3,6 +3,7 @@ package user
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 
 	"github.com/clarke94/weigh-me/srv/internal/driver"
 	"github.com/clarke94/weigh-me/srv/models"
@@ -12,11 +13,11 @@ import (
 // InsertUser creates a new user
 func InsertUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Context-Type", "application/x-www-form-urlencoded")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
 	w.Header().Set("Access-Control-Allow-Methods", "POST")
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
 	var user models.User
+	var res models.WeightResponse
 
 	// decode the json request to user
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -31,5 +32,12 @@ func InsertUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	render.JSON(w, r, insertID)
+	res.Status = 200
+	res.StatusText = "ok"
+	res.URL = r.URL.Path
+	res.Ok = true
+	res.Name = "Successful"
+	res.Message = "All weights successfully returned. user_id=" + strconv.FormatInt(insertID, 10)
+	res.Error = ""
+	render.JSON(w, r, res)
 }
