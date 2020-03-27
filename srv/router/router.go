@@ -19,6 +19,7 @@ func Routes() *chi.Mux {
 
 	router.Route("/api/v1", func(r chi.Router) {
 		r.Mount("/weight", weight.Routes())
+		r.Mount("/user", weight.Routes())
 	})
 
 	return router
