@@ -1,4 +1,4 @@
-package weight
+package models
 
 // Weight model
 type Weight struct {

@@ -3,6 +3,7 @@ package weight
 import (
 	"net/http"
 
+	"github.com/clarke94/weigh-me/srv/models"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/render"
 )
@@ -11,7 +12,7 @@ import (
 func GetByID(w http.ResponseWriter, r *http.Request) {
 	ID := chi.URLParam(r, "ID")
 
-	weights := Weight{
+	weights := models.Weight{
 		ID:    ID,
 		Name:  "Wed Feb 26 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
 		Value: 80,

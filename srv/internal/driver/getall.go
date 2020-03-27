@@ -2,23 +2,19 @@ package driver
 
 import (
 	"errors"
+
+	"github.com/clarke94/weigh-me/srv/models"
 )
 
-type Weight struct {
-	ID    string  `json:"id"`
-	Name  string  `json:"name"`
-	Value float64 `json:"value"`
-}
-
 // GetAllWeights will get all the weights of a given user
-func GetAllWeights() ([]Weight, error) {
+func GetAllWeights() ([]models.Weight, error) {
 	db, err := Connect()
 	if err != nil {
 		return nil, err
 	}
 	defer db.Close()
 
-	var weights []Weight
+	var weights []models.Weight
 	sqlStatement := "SELECT id, name, value FROM weights"
 
 	// execute the sql statement
@@ -30,7 +26,7 @@ func GetAllWeights() ([]Weight, error) {
 
 	// iterate over the rows
 	for rows.Next() {
-		var weight Weight
+		var weight models.Weight
 
 		// unmarshal the row object to user
 		err = rows.Scan(&weight.ID, &weight.Name, &weight.Value)
@@ -47,14 +43,14 @@ func GetAllWeights() ([]Weight, error) {
 }
 
 // GetAllWeightsByUserID will return all weight values for that user
-func GetAllWeightsByUserID(id int64) ([]Weight, error) {
+func GetAllWeightsByUserID(id int64) ([]models.Weight, error) {
 	db, err := Connect()
 	if err != nil {
 		return nil, err
 	}
 	defer db.Close()
 
-	var weights []Weight
+	var weights []models.Weight
 	sqlStatement := "SELECT id, name, value FROM weights WHERE user_id=$1"
 
 	// execute the sql statement
@@ -66,7 +62,7 @@ func GetAllWeightsByUserID(id int64) ([]Weight, error) {
 
 	// iterate over the rows
 	for rows.Next() {
-		var weight Weight
+		var weight models.Weight
 
 		// unmarshal the row object to user
 		err = rows.Scan(&weight.ID, &weight.Name, &weight.Value)
