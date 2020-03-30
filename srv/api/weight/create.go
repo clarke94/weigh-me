@@ -3,7 +3,6 @@ package weight
 import (
 	"encoding/json"
 	"net/http"
-	"strconv"
 
 	"github.com/clarke94/weigh-me/srv/internal/driver"
 	"github.com/clarke94/weigh-me/srv/models"
@@ -25,20 +24,20 @@ func CreateWeight(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	insertID, err := driver.InsertWeight(weight)
+	weight, err = driver.InsertWeight(weight)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	var res models.InsertOneUserResponse
+	var res models.InsertOneWeightResponse
 	res.Status = 200
 	res.StatusText = "ok"
 	res.URL = r.URL.Path
 	res.Ok = true
 	res.Name = "Successful"
 	res.Message = "One weight successfully created"
-	res.Results = "weight_id=" + strconv.FormatInt(insertID, 10)
+	res.Results = weight
 	res.Error = ""
 	render.JSON(w, r, res)
 }

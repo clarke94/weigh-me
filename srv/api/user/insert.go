@@ -3,7 +3,6 @@ package user
 import (
 	"encoding/json"
 	"net/http"
-	"strconv"
 
 	"github.com/clarke94/weigh-me/srv/internal/driver"
 	"github.com/clarke94/weigh-me/srv/models"
@@ -25,7 +24,7 @@ func InsertUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	insertID, err := driver.InsertUser(user)
+	user, err = driver.InsertUser(user)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -38,7 +37,7 @@ func InsertUser(w http.ResponseWriter, r *http.Request) {
 	res.Ok = true
 	res.Name = "Successful"
 	res.Message = "One user successfully created"
-	res.Results = "user_id=" + strconv.FormatInt(insertID, 10)
+	res.Results = user
 	res.Error = ""
 	render.JSON(w, r, res)
 }

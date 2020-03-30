@@ -7,41 +7,37 @@ import (
 )
 
 // InsertUser will insert one user
-func InsertUser(user models.User) (userID int64, err error) {
+func InsertUser(user models.User) (returnedUser models.User, err error) {
 	db, err := Connect()
 	if err != nil {
-		return 0, errors.New("Unable to execute the query")
+		return returnedUser, errors.New("Unable to execute the query")
 	}
 	defer db.Close()
 
-	sqlStatement := "INSERT INTO users (auth_id, first_name, last_name, email) VALUES ($1, $2, $3, $4) RETURNING id"
+	sqlStatement := "INSERT INTO users (auth_id, first_name, last_name, email) VALUES ($1, $2, $3, $4) RETURNING id, auth_id, first_name, last_name, email"
 
-	var id int64
-
-	err = db.QueryRow(sqlStatement, user.AuthID, user.FirstName, user.LastName, user.Email).Scan(&id)
+	err = db.QueryRow(sqlStatement, user.AuthID, user.FirstName, user.LastName, user.Email).Scan(&returnedUser.ID, &returnedUser.AuthID, &returnedUser.FirstName, &returnedUser.LastName, &returnedUser.Email)
 	if err != nil {
-		return 0, errors.New("Unable to execute the query")
+		return returnedUser, errors.New("Unable to execute the query")
 	}
 
-	return id, nil
+	return returnedUser, nil
 }
 
 // InsertWeight will insert one weight for a given user
-func InsertWeight(weight models.Weight) (userID int64, err error) {
+func InsertWeight(weight models.Weight) (returnedWeight models.Weight, err error) {
 	db, err := Connect()
 	if err != nil {
-		return 0, errors.New("Unable to execute the query")
+		return returnedWeight, errors.New("Unable to execute the query")
 	}
 	defer db.Close()
 
-	sqlStatement := "INSERT INTO weights (user_id, name, value) VALUES ($1, $2, $3) RETURNING id"
+	sqlStatement := "INSERT INTO weights (user_id, name, value) VALUES ($1, $2, $3) RETURNING id, user_id, name, value"
 
-	var id int64
-
-	err = db.QueryRow(sqlStatement, weight.UserID, weight.Name, weight.Value).Scan(&id)
+	err = db.QueryRow(sqlStatement, weight.UserID, weight.Name, weight.Value).Scan(&returnedWeight.ID, &returnedWeight.UserID, &returnedWeight.Name, &returnedWeight.Value)
 	if err != nil {
-		return 0, err
+		return returnedWeight, err
 	}
 
-	return id, nil
+	return returnedWeight, nil
 }
