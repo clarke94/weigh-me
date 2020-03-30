@@ -12,13 +12,26 @@ type WeightResponse struct {
 	Error      string   `json:"error"`
 }
 
-// UserResponse model for http responses
-type UserResponse struct {
+// GetOneUserResponse model for http responses
+type GetOneUserResponse struct {
 	Status     int    `json:"status"`
 	StatusText string `json:"statusText"`
 	URL        string `json:"url"`
 	Ok         bool   `json:"ok"`
 	Name       string `json:"name"`
 	Message    string `json:"message"`
+	Results    User   `json:"results"`
+	Error      string `json:"error"`
+}
+
+// InsertOneUserResponse model for http responses
+type InsertOneUserResponse struct {
+	Status     int    `json:"status"`
+	StatusText string `json:"statusText"`
+	URL        string `json:"url"`
+	Ok         bool   `json:"ok"`
+	Name       string `json:"name"`
+	Message    string `json:"message"`
+	Results    string `json:"results"`
 	Error      string `json:"error"`
 }

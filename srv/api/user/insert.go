@@ -17,7 +17,6 @@ func InsertUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Headers", "Content-Type")
 
 	var user models.User
-	var res models.WeightResponse
 
 	// decode the json request to user
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -32,12 +31,14 @@ func InsertUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	var res models.InsertOneUserResponse
 	res.Status = 200
 	res.StatusText = "ok"
 	res.URL = r.URL.Path
 	res.Ok = true
 	res.Name = "Successful"
-	res.Message = "All weights successfully returned. user_id=" + strconv.FormatInt(insertID, 10)
+	res.Message = "One user successfully created"
+	res.Results = "user_id=" + strconv.FormatInt(insertID, 10)
 	res.Error = ""
 	render.JSON(w, r, res)
 }
