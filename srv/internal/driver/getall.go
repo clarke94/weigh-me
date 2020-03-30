@@ -15,7 +15,7 @@ func GetAllWeights() ([]models.Weight, error) {
 	defer db.Close()
 
 	var weights []models.Weight
-	sqlStatement := "SELECT id, name, value FROM weights"
+	sqlStatement := "SELECT id, user_id, name, value FROM weights"
 
 	// execute the sql statement
 	rows, err := db.Query(sqlStatement)
@@ -29,7 +29,7 @@ func GetAllWeights() ([]models.Weight, error) {
 		var weight models.Weight
 
 		// unmarshal the row object to user
-		err = rows.Scan(&weight.ID, &weight.Name, &weight.Value)
+		err = rows.Scan(&weight.ID, &weight.UserID, &weight.Name, &weight.Value)
 
 		if err != nil {
 			return nil, errors.New("Unable to execute the row scan")
