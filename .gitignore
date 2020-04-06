@@ -47,3 +47,7 @@ Thumbs.db
 
 # Environment
 .env
+
+# Netlify
+functions
+bin
