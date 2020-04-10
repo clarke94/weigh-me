@@ -3,6 +3,7 @@ module github.com/clarke94/weigh-me/srv
 go 1.13
 
 require (
+	github.com/aws/aws-lambda-go v1.16.0 // indirect
 	github.com/go-chi/chi v4.0.3+incompatible
 	github.com/go-chi/render v1.0.1
 	github.com/go-pg/pg v8.0.6+incompatible
