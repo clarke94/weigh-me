@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/json"
+	"strconv"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -19,8 +20,14 @@ type Response events.APIGatewayProxyResponse
 func Handler(request events.APIGatewayProxyRequest) (Response, error) {
 	var buf bytes.Buffer
 
+	id := request.PathParameters["id"]
+	intID, err := strconv.ParseInt(id, 10, 64)
+	if err != nil {
+		return Response{StatusCode: 404, Body: "UserID required"}, err
+	}
+
 	// call the GetAllWeights function ti retrieve all weights
-	weights, err := driver.GetAllWeights()
+	weights, err := driver.GetAllWeightsByUserID(intID)
 	if err != nil {
 		return Response{StatusCode: 404, Body: err.Error()}, err
 	}
