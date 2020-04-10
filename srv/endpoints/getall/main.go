@@ -2,11 +2,11 @@ package main
 
 import (
 	"bytes"
-	"context"
 	"encoding/json"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/clarke94/weigh-me/srv/internal/driver"
 )
 
 // Response is of type APIGatewayProxyResponse since we're leveraging the
@@ -16,15 +16,19 @@ import (
 type Response events.APIGatewayProxyResponse
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
-func Handler(ctx context.Context) (Response, error) {
+func Handler(request events.APIGatewayProxyRequest) (Response, error) {
 	var buf bytes.Buffer
 
-	body, err := json.Marshal(map[string]interface{}{
-		"message": "Go Serverless v1.0! Your function executed successfully!",
-	})
+	id := request.PathParameters["id"]
+
+	// call the getUser function with user id to retrieve a single user
+	user, err := driver.GetUserByAuthID(id)
+	body, err := json.Marshal(user)
+
 	if err != nil {
-		return Response{StatusCode: 404}, err
+		return Response{StatusCode: 404, Body: err.Error()}, err
 	}
+
 	json.HTMLEscape(&buf, body)
 
 	resp := Response{
@@ -33,7 +37,6 @@ func Handler(ctx context.Context) (Response, error) {
 		Body:            buf.String(),
 		Headers: map[string]string{
 			"Content-Type":                "application/json",
-			"X-MyCompany-Func-Reply":      "hello-handler",
 			"Access-Control-Allow-Origin": "*",
 		},
 	}
