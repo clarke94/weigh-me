@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"strconv"
 
@@ -17,7 +18,7 @@ import (
 type Response events.APIGatewayProxyResponse
 
 // Handler is our lambda handler invoked by the `lambda.Start` function call
-func Handler(request events.APIGatewayProxyRequest) (Response, error) {
+func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (Response, error) {
 	var buf bytes.Buffer
 
 	id := request.PathParameters["id"]
