@@ -20,7 +20,7 @@ type Response events.APIGatewayProxyResponse
 func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (Response, error) {
 	var buf bytes.Buffer
 
-	id := request.PathParameters["id"]
+	id := request.QueryStringParameters["id"]
 
 	// call the getUser function with user id to retrieve a single user
 	user, err := driver.GetUserByAuthID(id)

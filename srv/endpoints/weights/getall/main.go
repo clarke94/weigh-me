@@ -21,7 +21,7 @@ type Response events.APIGatewayProxyResponse
 func Handler(ctx context.Context, request events.APIGatewayProxyRequest) (Response, error) {
 	var buf bytes.Buffer
 
-	id := request.PathParameters["id"]
+	id := request.QueryStringParameters["id"]
 	intID, err := strconv.ParseInt(id, 10, 64)
 	if err != nil {
 		return Response{StatusCode: 404, Body: "UserID required"}, err
