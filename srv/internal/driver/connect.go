@@ -13,7 +13,7 @@ import (
 // Connect will connect to the mongo database
 func Connect() (*sql.DB, error) {
 	// Get Environment variables
-	err := godotenv.Load(".env")
+	err := godotenv.Load()
 	if err != nil {
 		return nil, err
 	}
