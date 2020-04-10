@@ -12,6 +12,6 @@ export class UserService {
     ) { }
 
     getUserByAuthId(id: string) {
-        return this.http.get(`${environment.API_URL}/user-get-one?id=${id}`);
+        return this.http.get(`${environment.API_URL}/users-get-one?id=${id}`);
     }
 }
