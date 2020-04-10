@@ -2,7 +2,6 @@ package router
 
 import (
 	"github.com/clarke94/weigh-me/srv/api/user"
-	"github.com/clarke94/weigh-me/srv/api/weight"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/render"
@@ -18,9 +17,9 @@ func Routes() *chi.Mux {
 		middleware.Recoverer,
 	)
 
-	router.Route("/api/v1", func(r chi.Router) {
-		r.Mount("/weight", weight.Routes())
-		r.Mount("/user", user.Routes())
+	router.Route("/api/v1", func(router chi.Router) {
+		router.Get("/user-get-one", user.GetUserByAuthID)
+		router.Post("/user-insert-one", user.InsertUser)
 	})
 
 	return router

@@ -5,7 +5,6 @@ import (
 
 	"github.com/clarke94/weigh-me/srv/internal/driver"
 	"github.com/clarke94/weigh-me/srv/models"
-	"github.com/go-chi/chi"
 	"github.com/go-chi/render"
 )
 
@@ -13,7 +12,7 @@ import (
 func GetUserByAuthID(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Context-type", "application/x-www-form-urlencoded")
 	// get the userid from the request params, key is "id"
-	id := chi.URLParam(r, "id")
+	id := r.URL.Query().Get("id")
 
 	// call the getUser function with user id to retrieve a single user
 	user, err := driver.GetUserByAuthID(id)
