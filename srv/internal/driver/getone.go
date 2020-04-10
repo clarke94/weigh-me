@@ -27,5 +27,5 @@ func GetUserByAuthID(id string) (models.User, error) {
 		return user, err
 	}
 
-	return user, err
+	return user, nil
 }

@@ -23,8 +23,11 @@ func Handler(request events.APIGatewayProxyRequest) (Response, error) {
 
 	// call the getUser function with user id to retrieve a single user
 	user, err := driver.GetUserByAuthID(id)
-	body, err := json.Marshal(user)
+	if err != nil {
+		return Response{StatusCode: 404, Body: err.Error()}, err
+	}
 
+	body, err := json.Marshal(user)
 	if err != nil {
 		return Response{StatusCode: 404, Body: err.Error()}, err
 	}
