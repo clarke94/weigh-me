@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, HostListener } from '@angular/core';
-import { UserService } from 'src/app/services/user/user.service';
+import { WeightService } from 'src/app/services/weight/weight.service';
 import { DatePipe } from '@angular/common';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
@@ -34,7 +34,7 @@ export class ChartComponent implements OnInit {
     };
 
     constructor(
-        private userService: UserService,
+        private weightService: WeightService,
         private datePipe: DatePipe,
         private formBuilder: FormBuilder
     ) { }
@@ -109,7 +109,7 @@ export class ChartComponent implements OnInit {
     }
 
     getChartData(): void { // Currently not in use
-        this.userService.getAllWeights().subscribe(data => this.data = data);
+        this.weightService.getAllWeights().subscribe(data => this.data = data);
     }
 
     onSelect(data): void {
@@ -152,7 +152,7 @@ export class ChartComponent implements OnInit {
             "name": dateInput,
             "value": weight
         }
-        this.userService.addWeight(data).subscribe(
+        this.weightService.addWeight(data).subscribe(
             res => {
                 console.log(res);
             }

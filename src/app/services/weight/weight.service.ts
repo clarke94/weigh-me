@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
-export class UserService {
+export class WeightService {
 
     constructor(
         private http: HttpClient
