@@ -1,0 +1,10 @@
+.register-form {
+    &__group {
+        display: block;
+    }
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+    }
+}
