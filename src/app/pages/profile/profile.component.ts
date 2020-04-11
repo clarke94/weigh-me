@@ -10,23 +10,14 @@ import { UserService } from 'src/app/services/user/user.service';
 export class ProfileComponent implements OnInit {
 
     constructor(
-        public auth: AuthService,
-        private userService: UserService
+        public auth: AuthService
     ) { }
 
     ngOnInit(): void {
-        this.getUserProfile();
-    }
-
-    getUserProfile() {
-        this.userService.getUserByAuthId("1").subscribe(
+        this.auth.userProfile$.subscribe(
             data => {
-                console.log(data);
-            },
-            err => {
-                console.log('error', err);
+                console.log('user', data);
             }
-        );
+        )
     }
-
 }
