@@ -18,6 +18,6 @@ export class ProfileComponent implements OnInit {
             data => {
                 console.log('user', data);
             }
-        )
+        );
     }
 }

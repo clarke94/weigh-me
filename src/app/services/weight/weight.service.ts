@@ -15,14 +15,14 @@ export class WeightService {
     getAllWeights(): Observable<any> {
         return this.http.get('/weights').pipe(
             map(res => {
-                let series: any[] = [];
+                const series: any[] = [];
                 for (const [_, val] of Object.entries(res)) {
                     series.push(val);
                 }
 
                 const data = [{
-                    "name": "Weights",
-                    "series": series
+                    name: 'Weights',
+                    series: series
                 }];
                 return data;
             })

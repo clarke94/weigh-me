@@ -21,6 +21,6 @@ export class InitialInterceptor implements HttpInterceptor {
         this.store.dispatch(active());
         return next.handle(request).pipe(
             finalize(() => this.store.dispatch(inactive()))
-        )
+        );
     }
 }
