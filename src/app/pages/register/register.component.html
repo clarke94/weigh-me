@@ -1,3 +1,8 @@
+<div class="register-header">
+    <svg class="register-header__logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 107.677 42.258">
+        <path fill="none" stroke="#02c39a" stroke-width="17.165" d="M8.384-2.154l9.684 36.192h2.414l8.009-7.95h1.292l8.604 7.95h2.101L50.342-2.7M57.868 44.645l9.684-36.192h2.414l8.009 7.95h1.293l8.603-7.95h2.101l9.854 36.738" />
+    </svg>
+</div>
 <mat-horizontal-stepper [linear]="true" #stepper>
 
     <mat-step [stepControl]="personalInfoForm">
@@ -33,6 +38,10 @@
     <mat-step [stepControl]="fitnessForm">
         <form [formGroup]="fitnessForm" class="register-form">
             <ng-template matStepLabel>Fitness and Goals</ng-template>
+            <mat-form-field class="register-form__group">
+                <mat-label>Height (centimetres)</mat-label>
+                <input matInput type="number" formControlName="height" required>
+            </mat-form-field>
             <div class="register-form__footer">
                 <button mat-flat-button color="primary" matStepperPrevious>Back</button>
                 <button mat-flat-button color="primary" matStepperNext>Next</button>
@@ -45,7 +54,7 @@
         <p>You are now done.</p>
         <div class="register-form__footer">
             <button mat-flat-button color="primary" matStepperPrevious>Back</button>
-            <button mat-flat-button color="primary" (click)="stepper.reset()">Reset</button>
+            <button mat-flat-button color="primary" (click)="stepper.reset()">Finish</button>
         </div>
     </mat-step>
 

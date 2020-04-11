@@ -35,14 +35,11 @@ export class RegisterComponent implements OnInit {
 
     InitialiseFitnessForm(): void {
         this.fitnessForm = this.formBuilder.group({
-            displayName: ['', Validators.compose([
+            height: ['', Validators.compose([
                 Validators.required,
-                Validators.minLength(3),
+                Validators.min(59),
+                Validators.max(300),
             ])],
-            gender: ['', Validators.compose([
-                Validators.required,
-                Validators.minLength(3),
-            ])]
         });
     }
 }

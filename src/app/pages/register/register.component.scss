@@ -1,3 +1,14 @@
+@import '../../../assets/scss/shared';
+
+:host {
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 .register-form {
     &__group {
         display: block;
@@ -6,5 +17,17 @@
     &__footer {
         display: flex;
         justify-content: space-between;
+    }
+}
+
+.register-header {
+    @include rem(padding-bottom, 66px);
+    @include rem(padding-top, 33px);
+    display: flex;
+    justify-content: center;
+
+    &__logo {
+        @include rem(height, 36px);
+        width: auto;
     }
 }
